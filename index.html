@@ -100,10 +100,42 @@
             height: 700px;
             transform:rotate(9deg);
         }
+        #glow {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #000000;
+            box-shadow:
+                0 0 60px 10px rgb(255, 255, 255),  /* inner white */
+                0 0 100px 20px rgb(0, 0, 0), /* middle magenta */
+                0 0 140px 30px rgb(141, 141, 141); /*outer cyan */
+
+            pointer-events: none;
+            z-index: 1000;  
+        }
+        .hideCursor {
+            cursor: none;
+        }
+
     </style>
+    <script>
+        window.onmousemove = e =>   {
+
+            const glow = document.getElementById("glow");
+
+            const x = e.clientX-10;
+            const y = e.clientY-10;
+
+            glow.style.left = x+'px';
+            glow.style.top = y+'px';
+
+        }
+    </script>
     
 </head>
-<body>
+<body class = "page hideCursor">
+    <div id = "glow"></div>
     <div id="background-gradient">
         <div id = "center-background">
             <p id = "Fathers-Day">HAPPY FATHERS DAY</p>
